@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Idaten App</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="./dist/output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div>
+      <h1 class="text-3xl font-bold underline">Test.html</h1>
+      <!--  抽選結果表示  -->
+      <div id="result"></div>
+      <div>
+        <button onclick="test()">実行</button>
+      </div>
+    </div>
+    <script src="./js/displayLotteyResult.js"></script>
+    <script src="./js/distrlbute.js"></script>
+    <script>
+      function test() {
+        // ダミーデータ あとで消す
+        const nameList = ['aaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff', 'ggg'];
+        const mailList = [
+          'aaa@asukl.com',
+          'bbb@askul.com',
+          'ccc@askul.com',
+          'ddd@askul.com',
+          'eee@askul.com',
+          'fff@askul.com',
+          'ggg@askul.com',
+        ];
+        const listWeight = [0, 0, 0, 1, 1, 1, 2];
+        const groupNum = 3;
+        displayLotteyResult(distributeGroupMember(nameList, mailList, listWeight, groupNum));
+        console.log(distributeGroupMember(nameList, mailList, listWeight, groupNum));
+      }
+    </script>
+  </body>
+</html>
