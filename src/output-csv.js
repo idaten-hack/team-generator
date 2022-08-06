@@ -21,11 +21,11 @@ const outputCSV = (groupData) => {
   // ファイルダウンロードの準備から実行
   const blob = new Blob([outputText], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  document.body.appendChild(a);
-  a.download = 'output.csv';
-  a.href = url;
-  a.click();
-  a.remove();
+  const aTag = document.createElement('a');
+  document.body.appendChild(aTag);
+  aTag.download = 'output.csv';
+  aTag.href = url;
+  aTag.click();
+  aTag.remove();
   URL.revokeObjectURL(url);
 };
