@@ -37,14 +37,12 @@ function distributeGroupMember(nameList, mailList, listWeight, groupNum) {
     }
     tmpList.push(unitList[i]);
   }
-
   shuffle(tmpList);
   shuffledList.push.apply(shuffledList, tmpList);
 
   // レスポンス内容作成
   let tmpGroupNum = 0;
 
-  // 二次元配列の作成
   for (let i = 0; i < groupNum; i++) {
     groupList.push([]);
   }
