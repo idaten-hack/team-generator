@@ -29,7 +29,7 @@ function distributeGroupMember(nameList, mailList, listWeight, groupNum) {
 
   //重みごとのグループに分け、グループごとにシャッフルしてから結合
   for (let i = 0; i < unitList.length; i++) {
-    if (listWeight[i] != weightNum) {
+    if (listWeight[i] !== weightNum) {
       shuffle(tmpList);
       shuffledList.push.apply(shuffledList, tmpList);
       tmpList.splice(0);
@@ -50,7 +50,7 @@ function distributeGroupMember(nameList, mailList, listWeight, groupNum) {
   for (let i = 0; i < shuffledList.length; i++) {
     groupList[tmpGroupNum].push(shuffledList[i]);
     tmpGroupNum++;
-    if (tmpGroupNum == groupNum) tmpGroupNum = 0;
+    if (tmpGroupNum === groupNum) tmpGroupNum = 0;
   }
 
   return groupList;
