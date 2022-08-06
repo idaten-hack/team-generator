@@ -15,11 +15,11 @@
         <button onclick="test()">実行</button>
       </div>
     </div>
-    <script src="./js/displayLotteyResult.js"></script>
-    <script src="./js/distrlbute.js"></script>
+    <script src="js/display-lottery-result.js"></script>
+    <script src="js/distribute.js"></script>
     <script>
       function test() {
-        // ダミーデータ あとで消す
+        // テストデータ
         const nameList = ['aaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff', 'ggg'];
         const mailList = [
           'aaa@asukl.com',
@@ -32,7 +32,7 @@
         ];
         const listWeight = [0, 0, 0, 1, 1, 1, 2];
         const groupNum = 3;
-        displayLotteyResult(distributeGroupMember(nameList, mailList, listWeight, groupNum));
+        displayLotteryResult(distributeGroupMember(nameList, mailList, listWeight, groupNum));
         console.log(distributeGroupMember(nameList, mailList, listWeight, groupNum));
       }
     </script>

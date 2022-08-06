@@ -16,16 +16,16 @@ function shuffle(arr) {
  * @returns {*[]}
  */
 function distributeGroupMember(nameList, mailList, listWeight, groupNum) {
+  const groupList = [];
+  const tmpList = [];
+  const shuffledList = [];
+  let weightNum = 0;
+
   // メールリストと名前リストをまとめる
   const unitList = [];
   for (let i = 0; i < nameList.length; i++) {
     unitList.push({ name: nameList[i], mail: mailList[i] });
   }
-
-  const groupList = [];
-  let weightNum = 0;
-  const tmpList = [];
-  const shuffledList = [];
 
   //重みごとのグループに分け、グループごとにシャッフルしてから結合
   for (let i = 0; i < unitList.length; i++) {
