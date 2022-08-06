@@ -6,7 +6,7 @@ const outputCSV = (groupData) => {
 
   for (let i = 0; i < groupData.length; i++) {
     for (let j = 0; j < groupData[i].length; j++) {
-      outputText += 'グループ' + groupId + ',' + groupData[i][j] + '\n';
+      outputText += 'グループ' + groupId + ',' + groupData[i][j].mail + '\n';
     }
     groupId++;
   }
