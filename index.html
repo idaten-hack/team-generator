@@ -1,31 +1,100 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).on("click", ".add", function() {
+    $(this).parent().clone(true).insertAfter($(this).parent());
+  });
+
+  $(document).on("click", ".del", function() {
+    const target = $(this).parent();
+    if (target.parent().children().length > 1) {
+      target.remove();
+    }
+  });
+
+  $(document).on("click", ".del2", function() {
+    const target = $(this).parent();
+    if (target.parent().children().length > 4) {
+      target.remove();
+    }
+  });
+</script>
+
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Idaten App</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <link href="dist/output.css" rel="stylesheet" />
+  <title>Title</title>
 </head>
 <body>
-<h1 class="text-4xl text-green-700 text-center font-semibold">組み分け君</h1>
-<form action="" method="get" class="form-example">
-  <div class="form-example">
-    <label for="name">Enter your name: </label>
-    <input
-      type="text"
-      name="name"
-      id="name"
-      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      required
-    />
+<div class="center-block">
+  <h1>振り分けくん</h1>
+</div>
+
+<form action="" method="post" class="form-group" id="form-group">
+  <div class="form-group">
+    <label for="group-num">グループの数: </label>
+    <input type="text" class="group-num" id="group-num" required />
   </div>
-  <div class="form-example">
-    <label for="email">Enter your email: </label>
-    <input type="email" name="email" id="email" required />
+  <br />
+  <div style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333">
+    <div class="form-group">
+      <label for="elm">属性: </label>
+      <input type="text" class="elm" id="elm" required />
+    </div>
+    <br />
+    <div style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333">
+      <div class="form-group" style="display: inline-flex">
+        <label for="elm">名前: </label>
+        <input type="text" class="name" id="name" required />
+        <label for="elm">　　メアド: </label>
+        <input type="text" class="email" id="email" required />
+        <input type="button" value="＋" class="add pluralBtn" />
+        <input type="button" value="－" class="del pluralBtn" />
+      </div>
+    </div>
+    <input type="button" value="＋" class="add pluralBtn" />
+    <input type="button" value="－" class="del2 pluralBtn" />
   </div>
-  <div class="form-example">
-    <input type="submit" value="Subscribe!" />
+  <div class="form-group">
+    <input type="submit" value="振り分け！" />
   </div>
 </form>
+<script>
+  window.addEventListener("DOMContentLoaded", function() {
+
+    // HTML要素を取得
+    let form_group = document.getElementById("form-group");
+
+    // submitを待っている
+    form_group.addEventListener("submit", function(e) {
+      // グループの数を表示
+      const group_num = document.getElementsByClassName("group-num");
+      console.log("グループ数 = " + group_num[0].value);
+
+      // 属性の表示
+      const elm_list = document.getElementsByClassName("elm");
+      for (let i = 0; i < elm_list.length; i++) {
+        console.log(i + "つ目の属性 = " + elm_list[i].value);
+      }
+
+      // 人の名前の表示
+      const name_list = document.getElementsByClassName("name");
+      for (let i = 0; i < name_list.length; i++) {
+        console.log(i + "人目の名前 = " + name_list[i].value);
+      }
+
+      // メアドの表示
+      const email_list = document.getElementsByClassName("email");
+      for (let i = 0; i < email_list.length; i++) {
+        console.log(i + "人目のメアド = " + email_list[i].value);
+      }
+
+      // デバッグ時ページが更新されないようにイベントを止める
+      e.preventDefault();
+    });
+  });
+
+
+</script>
 </body>
 </html>
