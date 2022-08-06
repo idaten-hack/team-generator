@@ -1,16 +1,3 @@
-<script type="text/javascript">
-  function addForm(class_name) {
-    const content_area = document.getElementById(class_name);
-    const clone_element = content_area.cloneNode(true);
-    content_area.after(clone_element);
-  }
-
-  function deleteForm(class_name) {
-    const content_area = document.getElementById(class_name);
-    content_area.remove();
-  }
-</script>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,13 +32,25 @@
           </div>
         </div>
         <input type="button" value="＋" class="add pluralBtn" onclick="addForm('form-element')" />
-        <input type=" button" value="－" class="del2 pluralBtn" onclick="deleteForm('form-element')"/>
+        <input type="button" value="－" class="del2 pluralBtn" onclick="deleteForm('form-element')" />
       </div>
       <div class="form-group">
         <input type="submit" value="振り分け！" />
       </div>
     </form>
     <script>
+
+      function addForm(id_name) {
+        const content_area = document.getElementById(id_name);
+        const clone_element = content_area.cloneNode(true);
+        content_area.after(clone_element);
+      }
+
+      function deleteForm(id_name) {
+        const content_area = document.getElementById(id_name);
+        content_area.remove();
+      }
+
       window.addEventListener('DOMContentLoaded', function () {
         // HTML要素を取得
         let form_group = document.getElementById('form-group');
