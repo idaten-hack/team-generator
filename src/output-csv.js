@@ -1,5 +1,11 @@
 'use strict';
 
+/***
+ *
+ * 結果をCSV出力する
+ *
+ * @param groupData
+ */
 const outputCSV = (groupData) => {
   let outputText = 'Pre-assign Room Name,Email Address\n';
   let groupId = 1;
