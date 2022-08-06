@@ -6,7 +6,7 @@
 npm install
 ```
 
-## Tailwind CSSのビルド方法
+## Tailwind CSS のビルド方法
 
 ```shell
 npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
