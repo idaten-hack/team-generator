@@ -1,100 +1,89 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-  $(document).on("click", ".add", function() {
-    $(this).parent().clone(true).insertAfter($(this).parent());
-  });
+  function addForm(class_name) {
+    const content_area = document.getElementById(class_name);
+    const clone_element = content_area.cloneNode(true);
+    content_area.after(clone_element);
+  }
 
-  $(document).on("click", ".del", function() {
-    const target = $(this).parent();
-    if (target.parent().children().length > 1) {
-      target.remove();
-    }
-  });
-
-  $(document).on("click", ".del2", function() {
-    const target = $(this).parent();
-    if (target.parent().children().length > 4) {
-      target.remove();
-    }
-  });
+  function deleteForm(class_name) {
+    const content_area = document.getElementById(class_name);
+    content_area.remove();
+  }
 </script>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Title</title>
-</head>
-<body>
-<div class="center-block">
-  <h1>振り分けくん</h1>
-</div>
-
-<form action="" method="post" class="form-group" id="form-group">
-  <div class="form-group">
-    <label for="group-num">グループの数: </label>
-    <input type="text" class="group-num" id="group-num" required />
-  </div>
-  <br />
-  <div style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333">
-    <div class="form-group">
-      <label for="elm">属性: </label>
-      <input type="text" class="elm" id="elm" required />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <div class="center-block">
+      <h1>振り分けくん</h1>
     </div>
-    <br />
-    <div style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333">
-      <div class="form-group" style="display: inline-flex">
-        <label for="elm">名前: </label>
-        <input type="text" class="name" id="name" required />
-        <label for="elm">　　メアド: </label>
-        <input type="text" class="email" id="email" required />
-        <input type="button" value="＋" class="add pluralBtn" />
-        <input type="button" value="－" class="del pluralBtn" />
+
+    <form action="" method="post" class="form-group" id="form-group">
+      <div class="form-main">
+        <label for="group-num">グループの数: </label>
+        <input type="text" class="group-num" id="group-num" required />
       </div>
-    </div>
-    <input type="button" value="＋" class="add pluralBtn" />
-    <input type="button" value="－" class="del2 pluralBtn" />
-  </div>
-  <div class="form-group">
-    <input type="submit" value="振り分け！" />
-  </div>
-</form>
-<script>
-  window.addEventListener("DOMContentLoaded", function() {
+      <br />
+      <div id="form-element" class="form-element" style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333">
+        <div>
+          <label for="element">属性: </label>
+          <input type="text" class="element" id="element" required />
+        </div>
+        <br />
+        <div style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333">
+          <div id="forms-area" class="form-group" style="display: inline-flex">
+            <label for="element">名前: </label>
+            <input type="text" class="name" id="name" required />
+            <label for="element">　　メアド: </label>
+            <input type="text" class="email" id="email" required />
+            <input type="button" value="＋" class="add pluralBtn" onclick="addForm('forms-area')" />
+            <input type="button" value="－" class="del pluralBtn" onclick="deleteForm('forms-area')" />
+          </div>
+        </div>
+        <input type="button" value="＋" class="add pluralBtn" onclick="addForm('form-element')" />
+        <input type=" button" value="－" class="del2 pluralBtn" onclick="deleteForm('form-element')"/>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="振り分け！" />
+      </div>
+    </form>
+    <script>
+      window.addEventListener('DOMContentLoaded', function () {
+        // HTML要素を取得
+        let form_group = document.getElementById('form-group');
 
-    // HTML要素を取得
-    let form_group = document.getElementById("form-group");
+        // submitを待っている
+        form_group.addEventListener('submit', function (e) {
+          // グループの数を表示
+          const group_num = document.getElementsByClassName('group-num');
+          console.log('グループ数 = ' + group_num[0].value);
 
-    // submitを待っている
-    form_group.addEventListener("submit", function(e) {
-      // グループの数を表示
-      const group_num = document.getElementsByClassName("group-num");
-      console.log("グループ数 = " + group_num[0].value);
+          // 属性の表示
+          const element_list = document.getElementsByClassName('element');
+          for (let i = 0; i < element_list.length; i++) {
+            console.log(i + 'つ目の属性 = ' + element_list[i].value);
+          }
 
-      // 属性の表示
-      const elm_list = document.getElementsByClassName("elm");
-      for (let i = 0; i < elm_list.length; i++) {
-        console.log(i + "つ目の属性 = " + elm_list[i].value);
-      }
+          // 人の名前の表示
+          const name_list = document.getElementsByClassName('name');
+          for (let i = 0; i < name_list.length; i++) {
+            console.log(i + '人目の名前 = ' + name_list[i].value);
+          }
 
-      // 人の名前の表示
-      const name_list = document.getElementsByClassName("name");
-      for (let i = 0; i < name_list.length; i++) {
-        console.log(i + "人目の名前 = " + name_list[i].value);
-      }
+          // メアドの表示
+          const email_list = document.getElementsByClassName('email');
+          for (let i = 0; i < email_list.length; i++) {
+            console.log(i + '人目のメアド = ' + email_list[i].value);
+          }
 
-      // メアドの表示
-      const email_list = document.getElementsByClassName("email");
-      for (let i = 0; i < email_list.length; i++) {
-        console.log(i + "人目のメアド = " + email_list[i].value);
-      }
-
-      // デバッグ時ページが更新されないようにイベントを止める
-      e.preventDefault();
-    });
-  });
-
-
-</script>
-</body>
+          // デバッグ時ページが更新されないようにイベントを止める
+          e.preventDefault();
+        });
+      });
+    </script>
+  </body>
 </html>
