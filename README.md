@@ -4,6 +4,10 @@
 
 > Zoomの懇親会で大活躍間違いなし！<br>懇親会参加メンバーをいい感じにグループ分けしてくれるwebサイトを作りました！
 
+## デプロイ先
+
+https://idaten-hack.github.io/team-generator/
+
 ## 動作デモ
 
 <img src="img/demo.gif" alt='Demo' />
