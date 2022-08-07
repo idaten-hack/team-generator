@@ -24,10 +24,14 @@
       let nameId = 0;
       let areaId = 0;
 
+      let nameIdArray = Array(100).fill(0)
+
       function addGroupForm() {
         const contentArea = document.getElementById('form-group');
         const newFromAttributeGroup = document.createElement('div');
         groupId++;
+
+        nameIdArray[areaId]++;
         nameId++;
         areaId++;
         newFromAttributeGroup.setAttribute('id', `form-group-${groupId}`);
@@ -38,13 +42,13 @@
       </div>
       <br />
       <div id='form-area-${areaId}' >
-        <div id='form-input-info-${nameId}' class='form-group'>
+        <div id='form-input-info-${areaId}-${nameIdArray[areaId]}' class='form-group'>
           <label for='element'>名前: </label>
           <input type='text' class='name' id='name' required />
           <label for='element'>　　メアド: </label>
           <input type='text' class='email' id='email' required />
           <input type='button' value='＋' onclick="addInputInfo('form-area-${areaId}')" />
-          <input type='button' value='－' onclick="deleteElement('form-input-info-${nameId}')" />
+          <input type='button' value='－' onclick="deleteElement('form-input-info-${areaId}-${nameIdArray[areaId]}')" />
         </div>
       </div>
       <input type='button' value='＋' onclick='addGroupForm()' />
@@ -62,14 +66,14 @@
         const contentArea = document.getElementById(addAreaId);
         const newFromAttributeGroup = document.createElement('div');
         nameId++;
-        newFromAttributeGroup.setAttribute('id', `form-input-info-${nameId}`);
+        newFromAttributeGroup.setAttribute('id', `form-input-info-${areaId}-${nameIdArray[areaId]}`);
         newFromAttributeGroup.innerHTML = `
           <label for='element'>名前: </label>
           <input type='text' class='name' id='name' required />
           <label for='element'>　　メアド: </label>
           <input type='text' class='email' id='email' required />
           <input type='button' value='＋' onclick="addInputInfo('form-area-${areaId}')" />
-          <input type='button' value='－' onclick="deleteElement('form-input-info-${nameId}')" />
+          <input type='button' value='－' onclick="deleteElement('form-input-info-${areaId}-${nameIdArray[areaId]}')" />
     `;
         contentArea.appendChild(newFromAttributeGroup);
       }
