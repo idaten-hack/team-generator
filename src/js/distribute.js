@@ -46,11 +46,14 @@ function distributeGroupMember(nameList, mailList, listWeight, groupNum) {
   for (let i = 0; i < groupNum; i++) {
     groupList.push([]);
   }
+  console.log(groupList);
+  console.log(groupNum);
 
   for (let i = 0; i < shuffledList.length; i++) {
+    console.log(tmpGroupNum);
     groupList[tmpGroupNum].push(shuffledList[i]);
     tmpGroupNum++;
-    if (tmpGroupNum === groupNum) tmpGroupNum = 0;
+    if (tmpGroupNum === Number(groupNum)) tmpGroupNum = 0;
   }
 
   return groupList;
