@@ -1,6 +1,7 @@
 let groupId = 0;
 let nameId = 0;
 let areaId = 0;
+let result;
 
 function addGroupForm() {
   const contentArea = document.getElementById('form-group');
@@ -127,6 +128,10 @@ function addInputInfo(addAreaId) {
   contentArea.appendChild(newFromAttributeGroup);
 }
 
+function downloadCSV() {
+  outputCSV(result);
+}
+
 window.addEventListener('DOMContentLoaded', function () {
   addGroupForm();
 
@@ -171,6 +176,8 @@ window.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     const groupNum = document.getElementsByClassName('group-num');
     // eslint-disable-next-line no-undef
-    displayLotteryResult(distributeGroupMember(nameList, emailList, elementList, groupNum[0].value));
+    result = distributeGroupMember(nameList, emailList, elementList, groupNum[0].value);
+    // eslint-disable-next-line no-undef
+    displayLotteryResult(result);
   });
 });
