@@ -17,22 +17,13 @@
     </div>
     <script src="js/display-lottery-result.js"></script>
     <script src="js/distribute.js"></script>
+    <script src="js/test-generator.js"></script>
     <script>
       function test() {
         // テストデータ
-        const nameList = ['aaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff', 'ggg'];
-        const mailList = [
-          'aaa@asukl.com',
-          'bbb@askul.com',
-          'ccc@askul.com',
-          'ddd@askul.com',
-          'eee@askul.com',
-          'fff@askul.com',
-          'ggg@askul.com',
-        ];
-        const listWeight = [0, 0, 0, 1, 1, 1, 2];
-        const groupNum = 3;
-        displayLotteryResult(distributeGroupMember(nameList, mailList, listWeight, groupNum));
+        let testArray = testGenerator(3, 50)
+        // 3チーム50人で割り振ったとき、振り分ける　（重みは自動生成され、コンソールで見れます）
+        displayLotteryResult(distributeGroupMember(testArray[1], testArray[2], testArray[3], testArray[0]));
       }
     </script>
   </body>
