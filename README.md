@@ -6,7 +6,7 @@
 
 ## 動作デモ
 
-<img src="img/demo.gif" alt='Demo' width='720' />
+<img src="img/demo.gif" alt='Demo' />
 
 ## プロジェクトのセットアップ
 
