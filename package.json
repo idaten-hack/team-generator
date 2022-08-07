@@ -28,5 +28,8 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.2"
   }
 }
