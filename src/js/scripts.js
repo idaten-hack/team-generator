@@ -132,8 +132,8 @@ function downloadCSV() {
   outputCSV(result);
 }
 
-function copyGroupReslt() {
-  outputClipboard(reslt);
+function copyGroupResult() {
+  outputClipboard(result);
 }
 
 window.addEventListener('DOMContentLoaded', function () {
