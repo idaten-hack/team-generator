@@ -18,3 +18,15 @@ function displayLotteryResult(result) {
     }
   }
 }
+
+/**
+ *
+ * セッションに保存してある過去の抽選結果を取得
+ *
+ * @returns {any}
+ */
+
+function persistLotteryResult() {
+  const content = sessionStorage.getItem('pastResults');
+  return JSON.parse(content);
+}

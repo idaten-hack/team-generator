@@ -53,5 +53,8 @@ function distributeGroupMember(nameList, mailList, listWeight, groupNum) {
     if (tmpGroupNum === groupNum) tmpGroupNum = 0;
   }
 
+  // 過去の結果を格納
+  sessionStorage.setItem('pastResults', JSON.stringify(groupList));
+
   return groupList;
 }
