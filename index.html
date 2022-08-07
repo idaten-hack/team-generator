@@ -1,74 +1,114 @@
 <!DOCTYPE html>
-<html lang='ja'>
-<head>
-  <meta charset='UTF-8' />
-  <title>Title</title>
-</head>
-<body>
-<div class='center-block'>
-  <h1>振り分けくん</h1>
-</div>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <div class="center-block">
+      <h1>振り分けくん</h1>
+    </div>
 
-<form action='' method='post' class='form-group' id='form-group'>
-  <div class='form-main'>
-    <label for='group-num'>グループの数: </label>
-    <input type='text' class='group-num' id='group-num' required />
-  </div>
-  <br />
-  <from-attribute-group groupId='0' />
-  <div class='form-group'>
-    <input type='submit' value='振り分け！' />
-  </div>
-</form>
-<script src='src/js/form-attribute-group.js'></script>
-<script>
-  let groupId = 0;
+    <form action="" method="post" class="form-group" id="form-group">
+      <div class="form-group-num">
+        <label for="group-num">グループの数: </label>
+        <input type="text" class="group-num" id="group-num" required />
+      </div>
+      <div class="form-submit">
+        <input type="submit" value="振り分け！" />
+      </div>
+    </form>
 
-  function addForm(idName) {
-    const contentArea = document.getElementById('form-group');
-    const newFromAttributeGroup = document.createElement('from-attribute-group');
-    groupId++;
-    newFromAttributeGroup.setAttribute('groupId',groupId.toString());
-    contentArea.appendChild(newFromAttributeGroup);
-  }
+    <script>
+      let groupId = 0;
+      let nameId = 0;
+      let areaId = 0;
 
-  function deleteForm(id_name) {
-    const content_area = document.getElementById(id_name);
-    content_area.remove();
-  }
-
-  window.addEventListener('DOMContentLoaded', function() {
-    // HTML要素を取得
-    let form_group = document.getElementById('form-group');
-
-    // submitを待っている
-    form_group.addEventListener('submit', function(e) {
-      // グループの数を表示
-      const group_num = document.getElementsByClassName('group-num');
-      console.log('グループ数 = ' + group_num[0].value);
-
-      // 属性の表示
-      const element_list = document.getElementsByClassName('element');
-      for (let i = 0; i < element_list.length; i++) {
-        console.log(i + 'つ目の属性 = ' + element_list[i].value);
+      function addForm() {
+        const contentArea = document.getElementById('form-group');
+        const newFromAttributeGroup = document.createElement('div');
+        groupId++;
+        nameId++;
+        areaId++;
+        newFromAttributeGroup.setAttribute('id', `form-element-${groupId}`);
+        newFromAttributeGroup.innerHTML = `
+      <div>
+        <label for='element'>属性: </label>
+        <input type='text' class='element' id='element' required />
+      </div>
+      <br />
+      <div id='form-area-${areaId}' style='padding: 10px; margin-bottom: 10px; border: 1px dotted #333333'>
+        <div id='form-input-info-${nameId}' class='form-group' style='display: inline-flex'>
+          <label for='element'>名前: </label>
+          <input type='text' class='name' id='name' required />
+          <label for='element'>　　メアド: </label>
+          <input type='text' class='email' id='email' required />
+          <input type='button' value='＋' onclick="addName('form-area-${areaId}')" />
+          <input type='button' value='－' onclick="deleteForm('form-input-info-${nameId}')" />
+        </div>
+      </div>
+      <input type='button' value='＋' onclick='addForm()' />
+      <input type='button' value='－' onclick="deleteForm('form-element-${groupId}')" />
+    `;
+        contentArea.appendChild(newFromAttributeGroup);
       }
 
-      // 人の名前の表示
-      const name_list = document.getElementsByClassName('name');
-      for (let i = 0; i < name_list.length; i++) {
-        console.log(i + '人目の名前 = ' + name_list[i].value);
+      function deleteForm(id_name) {
+        const content_area = document.getElementById(id_name);
+        content_area.remove();
       }
 
-      // メアドの表示
-      const email_list = document.getElementsByClassName('email');
-      for (let i = 0; i < email_list.length; i++) {
-        console.log(i + '人目のメアド = ' + email_list[i].value);
+      function addName(addAreaId) {
+        const contentArea = document.getElementById(addAreaId);
+        const newFromAttributeGroup = document.createElement('div');
+        nameId++;
+        newFromAttributeGroup.setAttribute('id', `form-input-info-${nameId}`);
+        newFromAttributeGroup.innerHTML = `
+          <label for='element'>名前: </label>
+          <input type='text' class='name' id='name' required />
+          <label for='element'>　　メアド: </label>
+          <input type='text' class='email' id='email' required />
+          <input type='button' value='＋' onclick="addName('form-area-${areaId}')" />
+          <input type='button' value='－' onclick="deleteForm('form-input-info-${nameId}')" />
+    `;
+        contentArea.appendChild(newFromAttributeGroup);
       }
 
-      // デバッグ時ページが更新されないようにイベントを止める
-      e.preventDefault();
-    });
-  });
-</script>
-</body>
+      window.addEventListener('DOMContentLoaded', function () {
+        console.log('sample');
+        addForm();
+
+        // HTML要素を取得
+        let form_group = document.getElementById('form-group');
+
+        // submitを待っている
+        form_group.addEventListener('submit', function (e) {
+          // グループの数を表示
+          const group_num = document.getElementsByClassName('group-num');
+          console.log('グループ数 = ' + group_num[0].value);
+
+          // 属性の表示
+          const element_list = document.getElementsByClassName('element');
+          for (let i = 0; i < element_list.length; i++) {
+            console.log(i + 'つ目の属性 = ' + element_list[i].value);
+          }
+
+          // 人の名前の表示
+          const name_list = document.getElementsByClassName('name');
+          for (let i = 0; i < name_list.length; i++) {
+            console.log(i + '人目の名前 = ' + name_list[i].value);
+          }
+
+          // メアドの表示
+          const email_list = document.getElementsByClassName('email');
+          for (let i = 0; i < email_list.length; i++) {
+            console.log(i + '人目のメアド = ' + email_list[i].value);
+          }
+
+          // デバッグ時ページが更新されないようにイベントを止める
+          e.preventDefault();
+        });
+      });
+    </script>
+  </body>
 </html>
