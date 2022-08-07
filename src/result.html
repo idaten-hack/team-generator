@@ -18,6 +18,12 @@
     <script src="js/display-lottery-result.js"></script>
     <script src="js/distribute.js"></script>
     <script>
+      window.addEventListener('DOMContentLoaded', function () {
+        // セッションにデータが存在する場合は表示
+        if (sessionStorage.getItem('pastResults')) {
+          displayLotteryResult(persistLotteryResult());
+        }
+      });
       function test() {
         // テストデータ
         const nameList = ['aaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff', 'ggg'];
