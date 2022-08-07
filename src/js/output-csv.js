@@ -13,7 +13,7 @@ const outputCSV = (groupData) => {
   // CSVファイルの中身の作成
   for (let i = 0; i < groupData.length; i++) {
     for (let j = 0; j < groupData[i].length; j++) {
-      outputText += 'グループ' + groupId + ',' + groupData[i][j].mail + '\n';
+      outputText += 'ルーム' + groupId + ',' + groupData[i][j].mail + '\n';
     }
     groupId++;
   }

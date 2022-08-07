@@ -27,7 +27,7 @@ function distributeGroupMember(nameList, mailList, listWeight, groupNum) {
     unitList.push({ name: nameList[i], mail: mailList[i] });
   }
 
-  //重みごとのグループに分け、グループごとにシャッフルしてから結合
+  //重みごとのルームに分け、ルームごとにシャッフルしてから結合
   for (let i = 0; i < unitList.length; i++) {
     if (listWeight[i] !== weightNum) {
       shuffle(tmpList);
