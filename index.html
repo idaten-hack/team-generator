@@ -3,11 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <link href="dist/output.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="center-block">
-      <h1>振り分けくん</h1>
-    </div>
+    <h1 class="text-3xl font-bold">振り分けくん</h1>
 
     <form action="" method="post" class="form-group" id="form-group">
       <div class="form-group-num">
@@ -31,17 +30,17 @@
         nameId++;
         areaId++;
         newFromAttributeGroup.setAttribute('id', `form-group-${groupId}`);
+        newFromAttributeGroup.classList.add('mt-3');
         newFromAttributeGroup.innerHTML = `
       <div>
         <label for='element'>属性: </label>
         <input type='text' class='element' id='element' required />
       </div>
-      <br />
       <div id='form-area-${areaId}' >
         <div id='form-input-info-${nameId}' class='form-group'>
           <label for='element'>名前: </label>
           <input type='text' class='name' id='name' required />
-          <label for='element'>　　メアド: </label>
+          <label for='element'>メアド: </label>
           <input type='text' class='email' id='email' required />
           <input type='button' value='＋' onclick="addInputInfo('form-area-${areaId}')" />
           <input type='button' value='－' onclick="deleteElement('form-input-info-${nameId}')" />
@@ -66,7 +65,7 @@
         newFromAttributeGroup.innerHTML = `
           <label for='element'>名前: </label>
           <input type='text' class='name' id='name' required />
-          <label for='element'>　　メアド: </label>
+          <label for='element'>メアド: </label>
           <input type='text' class='email' id='email' required />
           <input type='button' value='＋' onclick="addInputInfo('form-area-${areaId}')" />
           <input type='button' value='－' onclick="deleteElement('form-input-info-${nameId}')" />
