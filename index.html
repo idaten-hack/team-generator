@@ -103,17 +103,12 @@
             }
           }
 
-          console.log('要素の配列');
-          console.log(elementList);
-
           // 人の名前の表示
           const nameListClass = document.getElementsByClassName('name');
           let nameList = [];
           for (let i = 0; i < nameListClass.length; i++) {
             nameList.push(nameListClass[i].value);
           }
-          console.log('名前の配列');
-          console.log(nameList);
 
           // メアドの表示
           const emailListClass = document.getElementsByClassName('email');
@@ -121,8 +116,6 @@
           for (let i = 0; i < emailListClass.length; i++) {
             emailList.push(emailListClass[i].value);
           }
-          console.log('メールの配列');
-          console.log(emailList);
 
           // デバッグ時ページが更新されないようにイベントを止める
           e.preventDefault();
