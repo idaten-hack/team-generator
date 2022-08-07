@@ -10,11 +10,11 @@ function displayLotteryResult(result) {
   // resultの後に降順で追加していく
   for (let i = result.length - 1; i >= 0; i--) {
     // ルーム名を表示
-    res.insertAdjacentHTML('afterbegin', `<h3>ルーム ${i + 1}</h3><ul id='wrapper-${i}'></ul>`);
+    res.insertAdjacentHTML('afterbegin', `<h3 class='font-bold mt-2'>ルーム ${i + 1}</h3><ul id='wrapper-${i}'></ul>`);
     // メンバー を表示
     let memberElement = document.getElementById(`wrapper-${i}`);
     for (let j = 0; j < result[i].length; j++) {
-      memberElement.insertAdjacentHTML('beforebegin', `<li>${result[i][j].name}</li>`);
+      memberElement.insertAdjacentHTML('beforebegin', `<li class='ml-3'>${result[i][j].name}</li>`);
     }
   }
 

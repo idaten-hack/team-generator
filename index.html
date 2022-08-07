@@ -2,7 +2,8 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>振り分けくん</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link href="dist/output.css" rel="stylesheet" />
   </head>
   <body>
@@ -17,7 +18,7 @@
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
                   href="/"
-                  >Zoom振り分けくん</a
+                  >振り分けくん</a
                 >
               </li>
             </ul>
@@ -40,9 +41,9 @@
           </div>
           <div class="form-submit mt-2">
             <input
-                    class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    type="submit"
-                    value="振り分け！"
+              class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              type="submit"
+              value="振り分け！"
             />
           </div>
         </form>
@@ -55,10 +56,7 @@
                 <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
               </svg>
             </div>
-            <!--          <h3 class="text-lg leading-6 font-medium text-gray-900">成功しました！</h3>-->
-            <div class="mt-2 px-7 py-3">
-              <p class="text-sm text-gray-500" id="result"></p>
-            </div>
+            <h3 class="text-lg leading-6 font-medium text-gray-900">成功しました！</h3>
             <div class="items-center px-4 py-3">
               <button
                 class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
@@ -69,20 +67,29 @@
             </div>
             <div class="items-center px-4 py-3">
               <button
-                      class="px-4 py-2 bg-sky-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300"
-                      onclick="downloadCSV()"
-              >
-                CSVダウンロード
-              </button>
-            </div>
-            <div class="items-center px-4 py-3">
-              <button
-                      class="px-4 py-2 bg-sky-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300"
-                      onclick="copyGroupResult()"
+                class="px-4 py-2 bg-sky-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300"
+                onclick="copyGroupResult()"
               >
                 結果をコピーする
               </button>
             </div>
+            <div class="items-center px-4 pt-3">
+              <button
+                class="px-4 py-2 bg-sky-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300"
+                onclick="downloadCSV()"
+              >
+                CSVダウンロード
+              </button>
+            </div>
+            <a
+              class="text-xs text-blue-600 visited:text-purple-600 items-end"
+              href="https://support.zoom.us/hc/ja/articles/360032752671-%E3%83%96%E3%83%AC%E3%82%A4%E3%82%AF%E3%82%A2%E3%82%A6%E3%83%88-%E3%83%AB%E3%83%BC%E3%83%A0%E3%81%AB%E5%8F%82%E5%8A%A0%E8%80%85%E3%82%92%E4%BA%8B%E5%89%8D%E3%81%AB%E5%89%B2%E3%82%8A%E5%BD%93%E3%81%A6%E3%82%8B#h_f1d7287d-ade8-4b73-b0b9-37365faecf55"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Zoomで事前にブレイクアウトルームを作成する
+            </a>
+            <div class="flex flex-col items-start px-7 py-3" id="result"></div>
           </div>
         </div>
       </div>
