@@ -1,6 +1,12 @@
-![image](https://user-images.githubusercontent.com/46528946/183275250-c193bc53-0126-4cde-93c5-d73c692a15e2.png)
+![Logo](img/logo.svg)
 
-# team-generator
+# 振り分けくん
+
+> Zoomの懇親会で大活躍間違いなし！<br>懇親会参加メンバーをいい感じにグループ分けしてくれるwebサイトを作りました！
+
+## 動作デモ
+
+<img src="img/demo.gif" alt='Demo' width='720' />
 
 ## プロジェクトのセットアップ
 
