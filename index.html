@@ -82,20 +82,25 @@
 
         // submitを待っている
         formGroup.addEventListener('submit', function (e) {
-          // 今出ている"form-area-i"を判別すし、属性を配列に入れる。
+          // 今出ている'form-area-i'を判別し、属性を配列に入れる。
           let elementList = [];
+          let elementCount = 0;
+
           for (let i = 1; i <= groupId; i++) {
             if (document.getElementById('form-group-' + i) != null) {
+              // 'form-area-i'のdiv要素の個数を取得
               const elementListCount = document.querySelectorAll('#form-area-' + i + ' div').length;
+
+              // 要素分属性の配列に追加
               for (let j = 0; j < elementListCount; j++) {
-                // 配列は0からでないといけないので-1指定。
-                // TODO どうにか上の方で0スタートからできないか検討
-                elementList.push(i - 1);
+                elementList.push(elementCount);
               }
+              elementCount++;
             }
           }
 
-          console.log('要素の配列→' + elementList);
+          console.log('要素の配列');
+          console.log(elementList);
 
           // 人の名前の表示
           const nameListClass = document.getElementsByClassName('name');
@@ -103,7 +108,8 @@
           for (let i = 0; i < nameListClass.length; i++) {
             nameList.push(nameListClass[i].value);
           }
-          console.log('名前の配列→' + nameList);
+          console.log('名前の配列');
+          console.log(nameList);
 
           // メアドの表示
           const emailListClass = document.getElementsByClassName('email');
@@ -111,7 +117,8 @@
           for (let i = 0; i < emailListClass.length; i++) {
             emailList.push(emailListClass[i].value);
           }
-          console.log('メールの配列→' + emailList);
+          console.log('メールの配列');
+          console.log(emailList);
 
           // デバッグ時ページが更新されないようにイベントを止める
           e.preventDefault();
