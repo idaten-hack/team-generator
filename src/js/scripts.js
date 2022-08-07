@@ -132,6 +132,10 @@ function downloadCSV() {
   outputCSV(result);
 }
 
+function copyGroupResult() {
+  outputClipboard(result);
+}
+
 window.addEventListener('DOMContentLoaded', function () {
   addGroupForm();
 
