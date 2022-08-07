@@ -24,13 +24,13 @@
       let nameId = 0;
       let areaId = 0;
 
-      function addForm() {
+      function addGroupForm() {
         const contentArea = document.getElementById('form-group');
         const newFromAttributeGroup = document.createElement('div');
         groupId++;
         nameId++;
         areaId++;
-        newFromAttributeGroup.setAttribute('id', `form-element-${groupId}`);
+        newFromAttributeGroup.setAttribute('id', `form-group-${groupId}`);
         newFromAttributeGroup.innerHTML = `
       <div>
         <label for='element'>属性: </label>
@@ -43,22 +43,22 @@
           <input type='text' class='name' id='name' required />
           <label for='element'>　　メアド: </label>
           <input type='text' class='email' id='email' required />
-          <input type='button' value='＋' onclick="addName('form-area-${areaId}')" />
-          <input type='button' value='－' onclick="deleteForm('form-input-info-${nameId}')" />
+          <input type='button' value='＋' onclick="addInputInfo('form-area-${areaId}')" />
+          <input type='button' value='－' onclick="deleteElement('form-input-info-${nameId}')" />
         </div>
       </div>
-      <input type='button' value='＋' onclick='addForm()' />
-      <input type='button' value='－' onclick="deleteForm('form-element-${groupId}')" />
+      <input type='button' value='＋' onclick='addGroupForm()' />
+      <input type='button' value='－' onclick="deleteElement('form-group-${groupId}')" />
     `;
         contentArea.appendChild(newFromAttributeGroup);
       }
 
-      function deleteForm(id_name) {
-        const content_area = document.getElementById(id_name);
-        content_area.remove();
+      function deleteElement(idName) {
+        const contentArea = document.getElementById(idName);
+        contentArea.remove();
       }
 
-      function addName(addAreaId) {
+      function addInputInfo(addAreaId) {
         const contentArea = document.getElementById(addAreaId);
         const newFromAttributeGroup = document.createElement('div');
         nameId++;
@@ -68,41 +68,40 @@
           <input type='text' class='name' id='name' required />
           <label for='element'>　　メアド: </label>
           <input type='text' class='email' id='email' required />
-          <input type='button' value='＋' onclick="addName('form-area-${areaId}')" />
-          <input type='button' value='－' onclick="deleteForm('form-input-info-${nameId}')" />
+          <input type='button' value='＋' onclick="addInputInfo('form-area-${areaId}')" />
+          <input type='button' value='－' onclick="deleteElement('form-input-info-${nameId}')" />
     `;
         contentArea.appendChild(newFromAttributeGroup);
       }
 
       window.addEventListener('DOMContentLoaded', function () {
-        console.log('sample');
-        addForm();
+        addGroupForm();
 
         // HTML要素を取得
-        let form_group = document.getElementById('form-group');
+        let formGroup = document.getElementById('form-group');
 
         // submitを待っている
-        form_group.addEventListener('submit', function (e) {
+        formGroup.addEventListener('submit', function (e) {
           // グループの数を表示
-          const group_num = document.getElementsByClassName('group-num');
-          console.log('グループ数 = ' + group_num[0].value);
+          const groupNum = document.getElementsByClassName('group-num');
+          console.log('グループ数 = ' + groupNum[0].value);
 
           // 属性の表示
-          const element_list = document.getElementsByClassName('element');
-          for (let i = 0; i < element_list.length; i++) {
-            console.log(i + 'つ目の属性 = ' + element_list[i].value);
+          const elementList = document.getElementsByClassName('element');
+          for (let i = 0; i < elementList.length; i++) {
+            console.log(i + 'つ目の属性 = ' + elementList[i].value);
           }
 
           // 人の名前の表示
-          const name_list = document.getElementsByClassName('name');
-          for (let i = 0; i < name_list.length; i++) {
-            console.log(i + '人目の名前 = ' + name_list[i].value);
+          const nameList = document.getElementsByClassName('name');
+          for (let i = 0; i < nameList.length; i++) {
+            console.log(i + '人目の名前 = ' + nameList[i].value);
           }
 
           // メアドの表示
-          const email_list = document.getElementsByClassName('email');
-          for (let i = 0; i < email_list.length; i++) {
-            console.log(i + '人目のメアド = ' + email_list[i].value);
+          const emailList = document.getElementsByClassName('email');
+          for (let i = 0; i < emailList.length; i++) {
+            console.log(i + '人目のメアド = ' + emailList[i].value);
           }
 
           // デバッグ時ページが更新されないようにイベントを止める
