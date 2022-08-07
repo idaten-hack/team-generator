@@ -12,7 +12,7 @@ function outputClipboard(groupData) {
 
   // クリップボードの中身を作成
   for (let i = 0; i < groupData.length; i++) {
-    outputText += '【グループ: ' + (i + 1) + '】\n';
+    outputText += '【ルーム: ' + (i + 1) + '】\n';
     for (let j = 0; j < groupData[i].length; j++) {
       outputText += groupData[i][j].name + '\n';
     }
