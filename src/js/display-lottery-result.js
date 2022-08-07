@@ -17,6 +17,9 @@ function displayLotteryResult(result) {
       memberElement.insertAdjacentHTML('beforebegin', `<li>${result[i][j].name}</li>`);
     }
   }
+
+  const modal = document.getElementById('my-modal');
+  modal.style.display = 'block';
 }
 
 /**
