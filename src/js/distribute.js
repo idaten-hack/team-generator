@@ -46,6 +46,7 @@ function distributeGroupMember(nameList, mailList, listWeight, groupNum) {
   for (let i = 0; i < groupNum; i++) {
     groupList.push([]);
   }
+
   for (let i = 0; i < shuffledList.length; i++) {
     groupList[tmpGroupNum].push(shuffledList[i]);
     tmpGroupNum++;

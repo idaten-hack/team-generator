@@ -74,7 +74,6 @@
     <script src="src/js/display-modal.js"></script>
     <script src="src/js/display-lottery-result.js"></script>
     <script src="src/js/distribute.js"></script>
-    <script src="src/output-csv.js"></script>
     <script>
       let groupId = 0;
       let nameId = 0;
@@ -219,7 +218,9 @@
           for (let i = 1; i <= groupId; i++) {
             if (document.getElementById('form-group-' + i) != null) {
               // 'form-area-i'のdiv要素の個数を取得
-              const elementListCount = document.querySelectorAll('#form-area-' + i + ' div').length;
+              let elementListCount = document.querySelectorAll('#form-area-' + i + ' div').length;
+              // div要素がリニューアルにより増えてしまったため、5で割って人数を割り出しています。
+              elementListCount = elementListCount / 5;
 
               // 要素分属性の配列に追加
               for (let j = 0; j < elementListCount; j++) {
