@@ -31,16 +31,16 @@ function distributeGroupMember(nameList, mailList, listWeight, groupNum) {
   for (let i = 0; i < unitList.length; i++) {
     if (listWeight[i] !== weightNum) {
       shuffle(tmpList);
-      if(Math.random() > 0.5) shuffledList.push.apply(shuffledList, tmpList);
-      else shuffledList.unshift.apply(shuffledList, tmpList);
+      if(Math.random() > 0.5) shuffledList.push.apply(shuffledList, tmpList); //後ろに追加
+      else shuffledList.unshift.apply(shuffledList, tmpList); //前に追加
       tmpList.splice(0);
       weightNum++;
     }
     tmpList.push(unitList[i]);
   }
   shuffle(tmpList);
-  if(Math.random() > 0.5) shuffledList.push.apply(shuffledList, tmpList);
-  else shuffledList.unshift.apply(shuffledList, tmpList);
+  if(Math.random() > 0.5) shuffledList.push.apply(shuffledList, tmpList); //後ろに追加
+  else shuffledList.unshift.apply(shuffledList, tmpList); //前に追加
 
   // レスポンス内容作成
   let tmpGroupNum = 0;
