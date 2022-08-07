@@ -8,15 +8,28 @@
   <body>
     <h1 class="text-3xl font-bold">振り分けくん</h1>
 
-    <form action="" method="post" class="form-group" id="form-group">
-      <div class="form-group-num">
-        <label for="group-num">グループの数: </label>
-        <input type="text" class="group-num" id="group-num" required />
+    <div class="container">
+      <div class="mt-3">
+        <form action="" class="form-group" id="form-group" method="post">
+          <div class="form-group-num">
+            <label for="group-num">ブレイクアウトルームの数</label>
+            <input
+              class="group-num focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              id="group-num"
+              required
+              type="text"
+            />
+          </div>
+          <div class="form-submit">
+            <input
+              class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              type="submit"
+              value="振り分け！"
+            />
+          </div>
+        </form>
       </div>
-      <div class="form-submit">
-        <input type="submit" value="振り分け！" />
-      </div>
-    </form>
+    </div>
 
     <script>
       let groupId = 0;
@@ -30,24 +43,24 @@
         nameId++;
         areaId++;
         newFromAttributeGroup.setAttribute('id', `form-group-${groupId}`);
-        newFromAttributeGroup.classList.add('mt-3');
+        newFromAttributeGroup.className = 'mt-3 grid grid-cols-6 gap-6';
         newFromAttributeGroup.innerHTML = `
       <div>
-        <label for='element'>属性: </label>
-        <input type='text' class='element' id='element' required />
+        <label for='element'>属性</label>
+        <input type='text' class='element focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' id='element' required />
       </div>
-      <div id='form-area-${areaId}' >
+      <div id='form-area-${areaId}' class=''>
         <div id='form-input-info-${nameId}' class='form-group'>
-          <label for='element'>名前: </label>
-          <input type='text' class='name' id='name' required />
-          <label for='element'>メアド: </label>
-          <input type='text' class='email' id='email' required />
-          <input type='button' value='＋' onclick="addInputInfo('form-area-${areaId}')" />
-          <input type='button' value='－' onclick="deleteElement('form-input-info-${nameId}')" />
+          <label for='element'>名前</label>
+          <input type='text' class='name group-num focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' id='name' required />
+          <label for='element'>メアド</label>
+          <input type='text' class='email focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' id='email' required />
+          <input type='button' class='bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' value='＋' onclick="addInputInfo('form-area-${areaId}')" />
+          <input type='button' class='bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' value='－' onclick="deleteElement('form-input-info-${nameId}')" />
         </div>
       </div>
-      <input type='button' value='＋' onclick='addGroupForm()' />
-      <input type='button' value='－' onclick="deleteElement('form-group-${groupId}')" />
+      <input type='button' class='bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' value='＋' onclick='addGroupForm()' />
+      <input type='button' class='bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' value='－' onclick="deleteElement('form-group-${groupId}')" />
     `;
         contentArea.appendChild(newFromAttributeGroup);
       }
@@ -64,9 +77,9 @@
         newFromAttributeGroup.setAttribute('id', `form-input-info-${nameId}`);
         newFromAttributeGroup.innerHTML = `
           <label for='element'>名前: </label>
-          <input type='text' class='name' id='name' required />
+          <input type='text' class='name focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' id='name' required />
           <label for='element'>メアド: </label>
-          <input type='text' class='email' id='email' required />
+          <input type='text' class='email focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' id='email' required />
           <input type='button' value='＋' onclick="addInputInfo('form-area-${areaId}')" />
           <input type='button' value='－' onclick="deleteElement('form-input-info-${nameId}')" />
     `;
