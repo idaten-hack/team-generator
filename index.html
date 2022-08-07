@@ -82,27 +82,36 @@
 
         // submitを待っている
         formGroup.addEventListener('submit', function (e) {
-          // グループの数を表示
-          const groupNum = document.getElementsByClassName('group-num');
-          console.log('グループ数 = ' + groupNum[0].value);
-
-          // 属性の表示
-          const elementList = document.getElementsByClassName('element');
-          for (let i = 0; i < elementList.length; i++) {
-            console.log(i + 'つ目の属性 = ' + elementList[i].value);
+          // 今出ている"form-area-i"を判別すし、属性を配列に入れる。
+          let elementList = [];
+          for (let i = 1; i <= groupId; i++) {
+            if (document.getElementById('form-group-' + i) != null) {
+              const elementListCount = document.querySelectorAll('#form-area-' + i + ' div').length;
+              for (let j = 0; j < elementListCount; j++) {
+                // 配列は0からでないといけないので-1指定。
+                // TODO どうにか上の方で0スタートからできないか検討
+                elementList.push(i - 1);
+              }
+            }
           }
+
+          console.log('要素の配列→' + elementList);
 
           // 人の名前の表示
-          const nameList = document.getElementsByClassName('name');
-          for (let i = 0; i < nameList.length; i++) {
-            console.log(i + '人目の名前 = ' + nameList[i].value);
+          const nameListClass = document.getElementsByClassName('name');
+          let nameList = [];
+          for (let i = 0; i < nameListClass.length; i++) {
+            nameList.push(nameListClass[i].value);
           }
+          console.log('名前の配列→' + nameList);
 
           // メアドの表示
-          const emailList = document.getElementsByClassName('email');
-          for (let i = 0; i < emailList.length; i++) {
-            console.log(i + '人目のメアド = ' + emailList[i].value);
+          const emailListClass = document.getElementsByClassName('email');
+          let emailList = [];
+          for (let i = 0; i < emailListClass.length; i++) {
+            emailList.push(emailListClass[i].value);
           }
+          console.log('メールの配列→' + emailList);
 
           // デバッグ時ページが更新されないようにイベントを止める
           e.preventDefault();
