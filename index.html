@@ -18,7 +18,11 @@
         <input type="submit" value="振り分け！" />
       </div>
     </form>
-
+    <div>
+      <div id="result"></div>
+    </div>
+    <script src="src/js/display-lottery-result.js"></script>
+    <script src="src/js/distribute.js"></script>
     <script>
       let groupId = 0;
       let nameId = 0;
@@ -122,6 +126,8 @@
 
           // デバッグ時ページが更新されないようにイベントを止める
           e.preventDefault();
+          const groupNum = document.getElementsByClassName('group-num');
+          displayLotteryResult(distributeGroupMember(nameList, emailList, elementList, groupNum[0].value));
         });
       });
     </script>
